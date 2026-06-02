@@ -66,7 +66,24 @@ gh issue list --label "in-progress"
 
 ### Step 4 — 세션 종료
 
-현재 in-progress 이슈 paused 처리:
+**0. 미머지 PR 체크**
+```bash
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+gh pr list --head "$BRANCH" --state open --json number,title,url
+```
+열린 PR 있으면:
+```
+⚠️ 미머지 PR이 있습니다!
+
+PR #{번호} [{제목}]
+🔗 {URL}
+
+지금 머지할까요? (y/n)
+```
+- y → `gh pr merge {번호} --merge --delete-branch` 실행
+- n → "나중에 직접 머지해주세요." 경고 출력
+
+**1. 현재 in-progress 이슈 paused 처리**
 ```bash
 BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 ISSUE=$(echo "$BRANCH" | grep -oE '#[0-9]+' | tr -d '#' | head -1)

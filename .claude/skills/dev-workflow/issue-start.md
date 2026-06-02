@@ -85,13 +85,16 @@ gh issue view {이슈번호}
 ---
 
 ### Step 3 — 브랜치 생성 (자동)
-Milestone 단위 브랜치 생성 or 체크아웃:
-- 있으면 체크아웃만
-- 없으면 생성
+`docs/seq-plan.md`에서 현재 이슈가 속한 청크의 브랜치명 읽기.
+브랜치명 형식: `feature/{기능명}` (예: feature/todo-input, feature/gemini-api)
+
+- 브랜치 있으면 체크아웃만:
 ```bash
-git checkout -b feature/{milestone-kebab-case}
-# 또는
-git checkout feature/{milestone-kebab-case}
+git checkout feature/{기능명}
+```
+- 없으면 생성 후 체크아웃:
+```bash
+git checkout -b feature/{기능명}
 ```
 
 체크아웃 후 기존 브랜치면 `"기존 브랜치로 전환했습니다."` 를 결과에 포함.
@@ -229,7 +232,9 @@ git push origin {현재 브랜치명}
 
 ---
 
-### Step 11 — PR 생성 (자동)
+### Step 11 — PR 생성 + 머지 승인 요청 ⚠️
+
+PR 생성:
 ```bash
 gh pr create \
   --title "[Chunk {n}] {청크 이름}" \
@@ -237,6 +242,22 @@ gh pr create \
   --base dev \
   --head {현재 브랜치명}
 ```
+
+PR 생성 후 머지 승인 요청:
+```
+✅ PR 생성 완료
+🔗 PR: {PR URL}
+
+PR 내용을 확인하고 머지할까요? (y/n)
+```
+- y → 아래 실행:
+```bash
+gh pr merge {PR번호} --merge --delete-branch
+git checkout dev
+git pull origin dev
+```
+  머지 완료 후 Step 12 진행
+- n → "나중에 직접 머지해주세요." 출력 후 Step 12 진행
 
 ---
 

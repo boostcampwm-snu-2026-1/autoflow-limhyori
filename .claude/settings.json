@@ -1,1 +1,15 @@
-{}
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd client && npx biome check --write src/ 2>/dev/null; cd ../server && npx biome check --write src/ 2>/dev/null"
+          }
+        ]
+      }
+    ]
+  }
+}
