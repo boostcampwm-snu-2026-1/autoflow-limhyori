@@ -20,13 +20,10 @@ gh issue list --milestone "{Milestone명}" --state open
 
 ### Step 3 — docs/seq-plan.md 저장 (자동)
 schema.md 형식으로 저장.
-브랜치는 기능 단위로 분리:
-- `feature/todo-input`    ← 할일 입력 관련 청크
-- `feature/gemini-api`    ← AI 연동 관련 청크
-- `feature/calendar-view` ← 캘린더 뷰 관련 청크
-
-각 청크의 브랜치명은 seq-plan.md에 명시.
-PR은 청크 완료 시마다 `feature/{기능명} → dev`.
+브랜치는 청크(기능) 단위로 생성:
+- 브랜치명: `feature/{기능명-kebab}` (예: feature/todo-input, feature/calendar-view)
+- 청크마다 브랜치를 새로 만들어 작업
+- PR은 청크 완료 시 해당 브랜치에서 dev로 생성 후 삭제
 
 이미 존재하면 덮어쓰기.
 
