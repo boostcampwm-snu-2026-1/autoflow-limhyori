@@ -51,12 +51,12 @@ export function WorkHoursSettings({
 				</button>
 			</div>
 
-			<div className="flex items-center gap-2 text-sm">
+			<div className="flex items-center gap-1.5 text-sm">
 				<input
 					type="time"
 					value={workHours.defaultStart}
 					onChange={(e) => onSaveDefault(e.target.value, workHours.defaultEnd)}
-					className="min-w-[112px] flex-1 rounded-md border border-gray-300 px-2 py-1.5"
+					className="min-w-[116px] flex-1 rounded-md border border-gray-300 px-1.5 py-1.5"
 				/>
 				<span className="text-gray-400 shrink-0">~</span>
 				<input
@@ -65,7 +65,7 @@ export function WorkHoursSettings({
 					onChange={(e) =>
 						onSaveDefault(workHours.defaultStart, e.target.value)
 					}
-					className="min-w-[112px] flex-1 rounded-md border border-gray-300 px-2 py-1.5"
+					className="min-w-[116px] flex-1 rounded-md border border-gray-300 px-1.5 py-1.5"
 				/>
 			</div>
 			<span className="text-xs text-gray-400">(매일 기본값)</span>
@@ -145,7 +145,7 @@ export function WorkHoursSettings({
 								</div>
 
 								{isCustom && (
-									<div className="flex items-center gap-1.5 pl-7">
+									<div className="flex items-center gap-1 pl-6">
 										<input
 											type="time"
 											value={override?.start ?? workHours.defaultStart}
@@ -156,7 +156,7 @@ export function WorkHoursSettings({
 													enabled: true,
 												})
 											}
-											className="min-w-[96px] flex-1 rounded-md border border-gray-300 px-2 py-1 text-xs"
+											className="min-w-[106px] flex-1 rounded-md border border-gray-300 px-1 py-1 text-xs"
 										/>
 										<span className="text-gray-400 shrink-0">~</span>
 										<input
@@ -169,7 +169,7 @@ export function WorkHoursSettings({
 													enabled: true,
 												})
 											}
-											className="min-w-[96px] flex-1 rounded-md border border-gray-300 px-2 py-1 text-xs"
+											className="min-w-[106px] flex-1 rounded-md border border-gray-300 px-1 py-1 text-xs"
 										/>
 									</div>
 								)}
