@@ -56,19 +56,19 @@ export function WorkHoursSettings({
 					type="time"
 					value={workHours.defaultStart}
 					onChange={(e) => onSaveDefault(e.target.value, workHours.defaultEnd)}
-					className="rounded-md border border-gray-300 px-2 py-1.5"
+					className="w-0 min-w-0 flex-1 rounded-md border border-gray-300 px-2 py-1.5"
 				/>
-				<span className="text-gray-400">~</span>
+				<span className="text-gray-400 shrink-0">~</span>
 				<input
 					type="time"
 					value={workHours.defaultEnd}
 					onChange={(e) =>
 						onSaveDefault(workHours.defaultStart, e.target.value)
 					}
-					className="rounded-md border border-gray-300 px-2 py-1.5"
+					className="w-0 min-w-0 flex-1 rounded-md border border-gray-300 px-2 py-1.5"
 				/>
-				<span className="text-xs text-gray-400 shrink-0">(매일 기본값)</span>
 			</div>
+			<span className="text-xs text-gray-400">(매일 기본값)</span>
 
 			{!expanded && sortedOverrides.length > 0 && (
 				<div className="mt-2 flex flex-wrap gap-1.5">
@@ -96,31 +96,32 @@ export function WorkHoursSettings({
 						const isOff = override?.enabled === false;
 						const isCustom = !!override && !isOff;
 						return (
-							<div key={day} className="flex items-center gap-2 text-sm">
-								<span className="w-6 shrink-0 text-gray-700">{label}</span>
+							<div key={day} className="flex flex-col gap-1.5 text-sm">
+								<div className="flex items-center gap-2">
+									<span className="w-6 shrink-0 text-gray-700">{label}</span>
 
-								<label className="flex items-center gap-1 text-xs text-red-500 shrink-0">
-									<input
-										type="checkbox"
-										checked={isOff}
-										onChange={(e) =>
-											onSaveOverride(
-												day,
-												e.target.checked
-													? {
-															start: override?.start ?? workHours.defaultStart,
-															end: override?.end ?? workHours.defaultEnd,
-															enabled: false,
-														}
-													: null,
-											)
-										}
-									/>
-									휴무
-								</label>
+									<label className="flex items-center gap-1 text-xs text-red-500 shrink-0">
+										<input
+											type="checkbox"
+											checked={isOff}
+											onChange={(e) =>
+												onSaveOverride(
+													day,
+													e.target.checked
+														? {
+																start:
+																	override?.start ?? workHours.defaultStart,
+																end: override?.end ?? workHours.defaultEnd,
+																enabled: false,
+															}
+														: null,
+												)
+											}
+										/>
+										휴무
+									</label>
 
-								{!isOff && (
-									<>
+									{!isOff && (
 										<label className="flex items-center gap-1 text-xs text-gray-500 shrink-0">
 											<input
 												type="checkbox"
@@ -140,9 +141,13 @@ export function WorkHoursSettings({
 											/>
 											직접
 										</label>
+									)}
+								</div>
+
+								{isCustom && (
+									<div className="flex items-center gap-2 pl-8">
 										<input
 											type="time"
-											disabled={!isCustom}
 											value={override?.start ?? workHours.defaultStart}
 											onChange={(e) =>
 												onSaveOverride(day, {
@@ -151,12 +156,11 @@ export function WorkHoursSettings({
 													enabled: true,
 												})
 											}
-											className="rounded-md border border-gray-300 px-2 py-1 text-xs disabled:bg-gray-50 disabled:text-gray-400"
+											className="w-0 min-w-0 flex-1 rounded-md border border-gray-300 px-2 py-1 text-xs"
 										/>
-										<span className="text-gray-400">~</span>
+										<span className="text-gray-400 shrink-0">~</span>
 										<input
 											type="time"
-											disabled={!isCustom}
 											value={override?.end ?? workHours.defaultEnd}
 											onChange={(e) =>
 												onSaveOverride(day, {
@@ -165,9 +169,9 @@ export function WorkHoursSettings({
 													enabled: true,
 												})
 											}
-											className="rounded-md border border-gray-300 px-2 py-1 text-xs disabled:bg-gray-50 disabled:text-gray-400"
+											className="w-0 min-w-0 flex-1 rounded-md border border-gray-300 px-2 py-1 text-xs"
 										/>
-									</>
+									</div>
 								)}
 							</div>
 						);
