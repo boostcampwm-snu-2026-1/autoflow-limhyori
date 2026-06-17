@@ -47,3 +47,8 @@ autoflow/
 ### Backend
 - Layered Architecture: routes → controllers → services → models
 - 환경변수는 .env로 관리, 절대 커밋 금지
+
+## Git 워크플로우
+- `dev`, `main` 브랜치에 직접 커밋 금지. 작업은 항상 `feature/{기능명}` 브랜치를 만들어서 진행하고, `dev`로 PR을 올린다.
+- GitHub 이슈 없이 작업을 시작하지 않는다. 이슈가 없으면 먼저 만들거나, `dev-workflow` Skill(`/issue-start`)로 브랜치를 딴다.
+- `dev → main` PR은 CI(Lint/Build/Type Check) 통과 후에만 머지한다.
