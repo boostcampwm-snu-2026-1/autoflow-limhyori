@@ -1,4 +1,39 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -m 5 -X PATCH http://localhost:5174/api/tasks/6a2fb9bc49b1ec56f04ba252 -H \"Content-Type: application/json\" -d '{\"title\":\"수정된 작업\",\"description\":\"설명 테스트\",\"priority\":\"high\"}')",
+      "Bash(curl -s -m 15 -X POST http://localhost:5174/api/ai/estimate -H \"Content-Type: application/json\" -d '{\"title\":\"보고서 작성\",\"deadline\":\"2026-06-20T00:00:00.000Z\"}')",
+      "Bash(curl -s -m 20 -X POST http://localhost:5174/api/ai/estimate -H \"Content-Type: application/json\" -d '{\"title\":\"보고서 작성\",\"deadline\":\"2026-06-20T00:00:00.000Z\"}')",
+      "Bash(curl -s -m 30 -X POST http://localhost:5174/api/ai/estimate -H \"Content-Type: application/json\" -d '{\"title\":\"보고서 작성\",\"deadline\":\"2026-06-20T00:00:00.000Z\"}')",
+      "Bash(curl -s -m 10 http://localhost:5174/ -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s -m 10 -X POST http://localhost:5174/api/tasks -H \"Content-Type: application/json\" -d '{\"title\":\"미배치 테스트\",\"deadline\":\"2026-06-20T10:00:00.000Z\"}')",
+      "Bash(curl -s -m 10 http://localhost:5174/api/tasks)",
+      "Bash(curl -s -m 10 -X DELETE http://localhost:5174/api/tasks/6a2fcdbdf1e5a9ff556abc3a -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s -m 30 -X POST http://localhost:5174/api/ai/estimate -H \"Content-Type: application/json\" -d '{\"title\":\"미배치 테스트\",\"deadline\":\"2026-06-20T10:00:00.000Z\"}')",
+      "Bash(node --experimental-strip-types _tmp_check.mjs)",
+      "Bash(rm _tmp_check.mjs)",
+      "Bash(curl -s -m 10 -X PATCH http://localhost:5174/api/tasks/6a2fcdbdf1e5a9ff556abc3a -H \"Content-Type: application/json\" -d '{\"start\":\"2026-06-17T06:00:00.000Z\",\"end\":\"2026-06-17T09:00:00.000Z\"}')",
+      "Bash(curl -s -m 10 -X PATCH http://localhost:5174/api/tasks/6a2fcdbdf1e5a9ff556abc3a -H \"Content-Type: application/json\" -d '{\"start\":null,\"end\":null}' -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s -m 10 http://localhost:5174/api/tasks/6a2fcdbdf1e5a9ff556abc3a)",
+      "Bash(curl -s http://localhost:5174 -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/api/tasks -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/tasks -H \"Content-Type: application/json\" -d '{\"title\":\"제목만 있는 할일\"}')",
+      "Bash(curl -s -X POST http://localhost:3000/api/tasks -H \"Content-Type: application/json\" -d '{\"title\":\"보고서 작성\",\"deadline\":\"2026-06-20T23:59:00.000Z\"}')",
+      "Bash(curl -s -X PATCH http://localhost:3000/api/tasks/6a2fe4190a031fa1a427300a -H \"Content-Type: application/json\" -d '{\"estimatedHours\":2.5}')",
+      "Bash(curl -s -X PATCH http://localhost:3000/api/tasks/6a2fe4190a031fa1a427300a -H \"Content-Type: application/json\" -d '{\"estimatedHours\":-1}')",
+      "Bash(curl -s -X PATCH http://localhost:3000/api/tasks/6a2fe1959c41c014c6952975 -H \"Content-Type: application/json\" -d '{\"estimatedHours\":1}')",
+      "Bash(curl -s -X PATCH http://localhost:3000/api/tasks/6a2fe4190a031fa1a427300a -H \"Content-Type: application/json\" -d '{\"estimatedHours\":3}')",
+      "Bash(curl -s -m 30 -X POST http://localhost:3000/api/ai/estimate -H \"Content-Type: application/json\" -d '{\"title\":\"보고서 작성\",\"deadline\":\"2026-06-20T00:00:00.000Z\"}' -w \"\\\\nHTTP %{http_code}\\\\n\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -m 30 -X POST http://localhost:3000/api/ai/estimate -H \"Content-Type: application/json\" -d '{\"title\":\"테스트 작업\",\"deadline\":\"2026-06-24T14:59:00.000Z\"}' -w \"\\\\nHTTP %{http_code}\\\\n\")",
+      "Bash(curl -s -X PATCH http://localhost:3000/api/tasks/6a2fdf7ea9cdc9a23970d4b1 -H \"Content-Type: application/json\" -d '{\"start\":\"2026-06-16T06:00:00.000Z\",\"end\":\"2026-06-16T09:00:00.000Z\",\"estimatedHours\":3}' -w \"\\\\nHTTP %{http_code}\\\\n\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/tasks -H \"Content-Type: application/json\" -d '{\"title\":\"발표 자료 만들기\",\"deadline\":\"2026-06-22T18:00:00.000Z\"}' -w \"\\\\nHTTP %{http_code}\\\\n\")",
+      "Bash(curl -s -m 30 -X POST http://localhost:3000/api/ai/estimate -H \"Content-Type: application/json\" -d '{\"title\":\"발표 자료 만들기\",\"deadline\":\"2026-06-22T18:00:00.000Z\"}' -w \"\\\\nHTTP %{http_code}\\\\n\")",
+      "Bash(jobs -l)",
+      "Bash(curl -s -X POST http://localhost:3000/api/tasks -H \"Content-Type: application/json\" -d '{\"title\":\"삭제 테스트\"}')"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {

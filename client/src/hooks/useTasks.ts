@@ -61,9 +61,16 @@ export function useTasks(): UseTasksReturn {
 			const existing = allTasks
 				.filter((t) => t._id !== taskId && !!(t.start && t.end))
 				.map(toScheduledTask);
-			const slot = findAvailableSlot(estimatedHours, existing, new Date(), workHours);
+			const slot = findAvailableSlot(
+				estimatedHours,
+				existing,
+				new Date(),
+				workHours,
+			);
 			const updated = await updateTask(taskId, slot);
-			setAllTasks((prev) => prev.map((t) => (t._id === updated._id ? updated : t)));
+			setAllTasks((prev) =>
+				prev.map((t) => (t._id === updated._id ? updated : t)),
+			);
 		},
 		[allTasks],
 	);
